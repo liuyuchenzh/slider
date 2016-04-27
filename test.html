@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        #slider {
+            position: relative;
+            width: 100%;
+            height: 288px;
+            overflow: hidden;
+        }
+        
+        #pageWrapper {
+            position: absolute;
+        }
+        
+        .page {
+            float: left;
+        }
+        
+        #slider ul {
+            position: absolute;
+            left: 50%;
+            bottom: 15px;
+            margin-left: -580px;
+        }
+        
+        #slider ul li {
+            float: left;
+            margin-right: 10px;
+        }
+        
+        .slider-btn {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #b7b7b7;
+            border-radius: 50%;
+            background-color: #b7b7b7;
+            cursor: pointer;
+        }
+        
+        .slider-btn.current-btn {
+            background-color: #27bb4d;
+            border-color: #27bb4d;
+        }
+        
+        .prev {
+            left: 50%;
+            margin-left: -590px;
+        }
+        
+        .next {
+            right: 50%;
+            margin-right: -590px;
+        }
+        
+        .prev,
+        .next {
+            display: inline-block;
+            position: absolute;
+            background-color: #aaa;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
+            line-height: 40px;
+            text-align: center;
+            color: #bbb;
+            font-size: 30px;
+            cursor: pointer;
+            visibility: hidden;
+        }
+        
+        .prev.show,
+        .next.show {
+            visibility: visible;
+        }
+        
+        .prev:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            right: 0;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border: 16px solid transparent;
+            border-right: 25px solid #fff;
+            border-left-width: 5px;
+        }
+        
+        .prev:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            right: 0;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border: 16px solid transparent;
+            border-right: 25px solid #aaa;
+            border-left-width: 8px;
+            z-index: 1;
+        }
+        
+        .next:before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 4px;
+            right: 0;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border: 16px solid transparent;
+            border-left: 25px solid #fff;
+            border-right-width: 5px;
+        }
+        
+        .next:after {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 4px;
+            right: 0;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border: 16px solid transparent;
+            border-left: 25px solid #aaa;
+            border-right-width: 8px;
+            z-index: 1;
+        }
+        
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/slider.js"></script>
+</head>
+
+<body>
+    <div id="slider">
+        <div class="clearfix" id="pageWrapper">
+            <div class="page">
+                <img src="img/banner.png">
+            </div>
+            <div class="page">
+                <img src="img/banner2.png">
+            </div>
+        </div>
+    </div>
+    <script>
+        slider.initModule($("body"));
+    </script>
+</body>
+
+</html>
