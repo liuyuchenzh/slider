@@ -98,9 +98,9 @@ var slider = (function() {
                                 if (slider.currentNum === slider.pageLen - 1) {
                                     slider.reachEnd();
                                 }
+                                slider.bindBtnWithNextPrev();
                             }
                         });
-                        slider.bindBtnWithNextPrev();
                     };
                 case "prev":
                     return function() {
@@ -108,7 +108,9 @@ var slider = (function() {
                             return;
                         }
                         var getAnimateObj = function() {
-                            return { "left": -slider.pageW * (slider.currentNum - 1) };
+                            return {
+                                "left": -slider.pageW * (slider.currentNum - 1)
+                            };
                         };
                         slider.$pageWrapper.animate(slider.getPrevAnimation(), {
                             duration: slider.slideSpan,
@@ -117,15 +119,15 @@ var slider = (function() {
                                 if (slider.currentNum === 0) {
                                     slider.reachStart();
                                 }
+                                slider.bindBtnWithNextPrev();
                             }
                         });
-                        slider.bindBtnWithNextPrev();
                     };
                 case "slider-btn":
                     return function() {
                         var i = slider.buttonArr.index(this);
                         slider.$pageWrapper.animate(slider.getBtnAnimation(i));
-                        slider.currentNum = i + 1; 
+                        slider.currentNum = i + 1;
                         $(this).addClass("current-btn").siblings().removeClass("current-btn");
                     };
                 default:
@@ -167,13 +169,19 @@ var slider = (function() {
             this.currentNum = 1;
         },
         getNextAnimation: function() {
-            return { "left": -this.pageW * (this.currentNum + 1) };
+            return {
+                "left": -this.pageW * (this.currentNum + 1)
+            };
         },
         getPrevAnimation: function() {
-            return { "left": -this.pageW * (this.currentNum - 1) };
+            return {
+                "left": -this.pageW * (this.currentNum - 1)
+            };
         },
         getBtnAnimation: function(index) {
-            return { "left": -this.pageW * (index + 1)};
+            return {
+                "left": -this.pageW * (index + 1)
+            };
         },
         bindBtnWithNextPrev: function() {
             $(this.buttonArr[this.currentNum - 1]).addClass("current-btn").siblings().removeClass("current-btn");
